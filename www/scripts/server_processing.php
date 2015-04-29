@@ -74,15 +74,15 @@
      * Ordering
      */
     $sOrder = "";
-    if ( isset( $_GET['iSortCol_0'] ) )
+    if ( isset( $_GET['order'] ) ) // ( isset( $_GET['iSortCol_0'] ) )
     {
         $sOrder = "ORDER BY  ";
-        for ( $i=0 ; $i<intval( $_GET['iSortingCols'] ) ; $i++ )
+        for ( $i=0 ; $i<count( $_GET['order'] ) ; $i++ )
         {
-            if ( $_GET[ 'bSortable_'.intval($_GET['iSortCol_'.$i]) ] == "true" )
+            if ( $_GET['columns'][intval($_GET['order'][$i]['column'])]['orderable'] == "true" )
             {
-                $sOrder .= $aColumns[ intval( $_GET['iSortCol_'.$i] ) ]."
-                    ".($_GET['sSortDir_'.$i]==='asc' ? 'asc' : 'desc') .", ";
+                $sOrder .= $aColumns[ intval($_GET['order'][$i]['column'] ) ]."
+                    ".($_GET['order'][$i]['dir']==='asc' ? 'asc' : 'desc') .", ";
             }
         }
          
@@ -101,14 +101,14 @@
      * on very large tables, and MySQL's regex functionality is very limited
      */
     $sWhere = "";
-    if ( isset($_GET['sSearch']) && $_GET['sSearch'] != "" )
+    if ( isset($_GET['search']) && $_GET['search']['value'] != "" )
     {
         $sWhere = "WHERE (";
         for ( $i=0 ; $i<count($aColumns) ; $i++ )
         {
-            if ( isset($_GET['bSearchable_'.$i]) && $_GET['bSearchable_'.$i] == "true" )
+            if ( isset($_GET['columns'][$i]['searchable']) && $_GET['columns'][intval($_GET['order'][$i]['column'])]['searchable'] == "true" )
             {
-                $sWhere .= $aColumns[$i]." LIKE '%".mysql_real_escape_string( $_GET['sSearch'] )."%' OR ";
+                $sWhere .= $aColumns[$i]." LIKE '%".mysql_real_escape_string( $_GET['search']['value'] )."%' OR ";
             }
         }
         $sWhere = substr_replace( $sWhere, "", -3 );
@@ -116,7 +116,7 @@
     }
      
     /* Individual column filtering */
-    for ( $i=0 ; $i<count($aColumns) ; $i++ )
+ /*   for ( $i=0 ; $i<count($aColumns) ; $i++ )
     {
         if ( isset($_GET['bSearchable_'.$i]) && $_GET['bSearchable_'.$i] == "true" && $_GET['sSearch_'.$i] != '' )
         {
@@ -131,7 +131,7 @@
             $sWhere .= $aColumns[$i]." LIKE '%".mysql_real_escape_string($_GET['sSearch_'.$i])."%' ";
         }
     }
-     
+ */    
      
     /*
      * SQL queries
