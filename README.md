@@ -14,14 +14,8 @@ An automated installscript will do the rest. Clone installAmp.sh
  - $ sudo installAM.sh
 
 
- DEPRICATED - Create MySQL user:
- DEPRICATED - uid: assetmanager
- DEPRICATED - pwd: 4t6ZsSqZp5tceqKU
 
- DEPRICATED - And create db and assign all privileges 
- DEPRICATED - db_name: assetmanager 
-
-Target:
+Design Target:
 - installer
 	- setting up DB
 	- adding first admin user
@@ -38,6 +32,7 @@ Target:
 	- update asset
 	- delete asset 
 	
+	- interfaces
 	- locations
 	- vendors
 	- suppliers
