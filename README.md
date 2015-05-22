@@ -6,7 +6,6 @@ Install debian server - only option is "standard utilities"
 Install git-core and clone this rep.
  
  $ sudo apt-get install git-core
- 
  $ git-clone https://github.com/keikoware/AssetManagement
  
  
@@ -14,16 +13,15 @@ Install git-core and clone this rep.
 An automated installscript will do the rest. Clone installAmp.sh
  
  $ cd Assetmanagment
- 
  $ sudo installAM.sh
 
 
-DEPRICATED - Create MySQL user:
-DEPRICATED - uid: assetmanager
-DEPRICATED - pwd: 4t6ZsSqZp5tceqKU
+ DEPRICATED - Create MySQL user:
+ DEPRICATED - uid: assetmanager
+ DEPRICATED - pwd: 4t6ZsSqZp5tceqKU
 
-DEPRICATED - And create db and assign all privileges 
-DEPRICATED - db_name: assetmanager 
+ DEPRICATED - And create db and assign all privileges 
+ DEPRICATED - db_name: assetmanager 
 
 Target:
 - installer
