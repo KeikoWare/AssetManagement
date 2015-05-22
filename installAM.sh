@@ -14,11 +14,13 @@ sudo echo phpmyadmin phpmyadmin/dbconfig-install boolean true  | sudo debconf-se
 
 sudo apt-get install -q -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" phpMyAdmin 
 
-# mysql --user=root --password=P@ssw0rd < ~/AssetManagement/setup/create_db.sql
 
 sudo mkdir /usr/share/assetmanager
 sudo cp ~/AssetManagement/www/* /usr/share/assetmanager
 sudo cp ~/AssetManagement/setup/assetmanager.conf /etc/apache2/conf-available
 sudo ln -s /etc/apache2/conf-available/assetmanager.conf /etc/apache2/conf-enabled/assetmanager.conf
 
+
 sudo service apache2 restart
+
+mysql --user=root --password=P@ssw0rd < ~/AssetManagement/setup/create_db.sql
